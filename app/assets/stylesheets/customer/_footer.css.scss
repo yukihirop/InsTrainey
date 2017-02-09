@@ -1,0 +1,66 @@
+@import '../shared/import';
+
+html, body {
+  margin: 0px;
+  padding: 0px;
+}
+
+//h1, h2, h3, h4 {
+//  margin-top: $h-margin;
+//}
+
+#wrapper {
+
+  @include write-border-line;
+}
+
+//footer
+.full-min-width.hidden-print {
+  background-color: $footer-container-background;
+}
+
+.full-min-width.hidden-print > .container {
+
+  @include write-border-line;
+
+  padding: $footer-container-padding;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: $footer-container-background;
+
+}
+
+.row > .col-md-3 {
+
+  //Trainey・リソース・ポリシー・最新情報
+  h4 {
+
+    font-family: inherit;
+    font-size: $h4-font-size;
+    color: $h4-color;
+
+  }
+
+}
+
+.list-unstyled {
+
+  li {
+    //fontawesomeの文字色
+    color: $footer-li-text-color;
+
+    a {
+      //<a>タグで挟まれる文字色
+      color: $footer-li-text-color;
+
+    }
+
+    //マウスで寺した時
+    a:hover {
+      color: white;
+    }
+  }
+
+}

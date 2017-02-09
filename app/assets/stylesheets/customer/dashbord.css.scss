@@ -1,0 +1,12 @@
+@import '../shared/import';
+
+.content.content-dashboard {
+  margin-top:$navbar-default-height;
+
+}
+
+.flash-area {
+  .alert.alert-success {
+    margin-top:$default-space;
+  }
+}

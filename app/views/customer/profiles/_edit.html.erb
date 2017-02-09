@@ -1,0 +1,9 @@
+<%= if @params == 'img'
+      render 'customer/profiles/edit/img'
+    elsif @params == 'name'
+      render 'customer/profiles/edit/name'
+    elsif @params == 'email'
+      render 'customer/profiles/edit/email'
+    elsif @params == 'password'
+      render 'customer/profiles/edit/password'
+    end %>

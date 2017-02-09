@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    attributes:
+      email:
+        main:
+        sub_1:
+        sub_2:
+    errors:
+      models:
+        email:
+          attributes:
+            main:
+            sub_1: 入力されたメールアドレス
+            sub_2: 入力されたメールアドレス

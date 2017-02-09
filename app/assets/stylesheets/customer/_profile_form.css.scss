@@ -1,0 +1,32 @@
+@import '../shared/import';
+
+.page-header {
+  margin-top:0px;
+}
+
+.from-group {
+  @include form-input-style
+}
+
+//ワイルドガードを使った表現
+input[id^=customer_profile_] {
+
+  @include form-input-style
+
+}
+
+
+label.required:after {
+  content: '*';
+  padding-left:$narrow;
+  color: $red;
+}
+
+.label.label-info {
+
+  //右寄せ
+  float:right;
+
+}
+
+

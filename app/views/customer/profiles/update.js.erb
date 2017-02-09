@@ -1,0 +1,25 @@
+//ブラウザによる通常の通信メカニズムではなくajaxの場合は.js.erb
+//alert('呼ばれました');
+
+
+
+
+//前処理
+if ($('.col-md-9').size() === 0) {
+  $('.row').append('<div class="col-md-9"></div>');
+} else {
+  $('.col-md-9').html('<%= j render partial: 'customer/profiles/email/update' %>');
+}
+
+
+
+
+
+//flashメッセージの再レンダリング
+if ($('.flash-area').size() === 0) {
+  $('.row').append('<div class="flash-area"></div>');
+} else {
+  $('.flash-area').html('');
+}
+
+$('.flash-area').html('<%= j render partial: 'customer/profiles/shared/flash' %>');

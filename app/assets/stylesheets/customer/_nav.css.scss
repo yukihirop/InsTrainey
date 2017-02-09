@@ -1,0 +1,46 @@
+@import '../shared/import';
+
+
+html, body {
+  margin: 0px;
+  padding: 0px;
+}
+
+h1, h2, h3, h4 {
+  margin-top: $h-margin;
+}
+
+#wrapper {
+
+  @include write-border-line;
+}
+
+//navbar
+
+.navbar-default .navbar-brand {
+  font-weight: bold;
+  color: #5e5e5e;
+  background-color: transparent;
+}
+
+.navbar-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  margin-top: 0;
+}
+
+.navbar-wrapper > .container {
+  padding: 0;
+}
+
+//新規登録・ログイン・Englishの部分のスタイル
+.nav.navbar-nav.navbar-right {
+  li {
+    a:hover {
+      color: $header-li-text-hover-color;
+    }
+  }
+}

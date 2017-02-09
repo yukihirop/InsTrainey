@@ -1,0 +1,27 @@
+
+/* mixinを定義する場所 */
+
+//枠線を書く
+@mixin write-border-line($color: white) {
+
+  @if false {
+
+    border-style: solid;
+    border-color: $color;
+
+  }
+
+}
+
+//フォームをbootstrapっぽくスタイルする
+@mixin form-input-style {
+
+  width: 100%;
+  padding: 6px 6px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+
+}
+

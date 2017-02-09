@@ -1,0 +1,25 @@
+<% @Title = "InsTrainey" %>
+<% @Discription = "Instagramの投稿で、筋トレの記録をしよう。" %>
+
+<!--ヘッダーの作成-->
+<div class="jumbotron">
+  <div class="content content-dashboard">
+    <div class="container">
+      <div class="flash-area">
+        <!--成功した場合-->
+        <% if flash[:notice] %>
+            <div class="alert alert-success">
+              <%= flash[:notice] %>
+            </div>
+        <% end %>
+        <!--失敗した場合-->
+        <% if flash[:alert] %>
+            <div class="alert alert-warning">
+              <%= flash[:alert] %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <%= render 'customer/shared/form' %>
+</div>

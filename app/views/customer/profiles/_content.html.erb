@@ -1,0 +1,158 @@
+<% if @customer.facebook_url
+     @facebook_link = @customer.facebook_url
+     @facebook_button = '登録解除'
+   else
+     @facebook_link = '-'
+     @facebook_button = '登録'
+   end %>
+
+
+<% if @customer.twitter_url
+     @twitter_link = @customer.twitter_url
+     @twitter_button = '登録解除'
+   else
+     @twitter_link = '-'
+     @twitter_button = '登録'
+   end %>
+
+
+<div class="full-min-width">
+  <%= render 'customer/shared/nav_login' %>
+  <div class="content with-sidebar">
+    <div class="container">
+
+      <div class="flash-area">
+        <!--成功した場合-->
+        <% if flash[:notice] %>
+            <div class="alert alert-success">
+              <%= flash[:notice] %>
+            </div>
+        <% end %>
+        <!--失敗した場合-->
+        <% if flash[:alert] %>
+            <div class="alert alert-warning">
+              <%= flash[:alert] %>
+            </div>
+        <% end %>
+      </div>
+
+      <div class="row">
+
+        <!--サイドメニューの作成-->
+        <div class="col-md-3">
+          <nav class="navbar navbar-default navbar-plain">
+            <div class="navbar-header">
+              <button class="btn btn-block navbar-toggle" data-target="#profile-side0nav" data-toggle="collapse" style="margin: 0 0 20px">
+                MENU
+                <i class="fa fa-caret-down"></i>
+              </button>
+            </div>
+            <!--メニュー一覧-->
+            <div class="collapse navbar-collapse" id="profile-side-nav" style="padding: 0">
+              <ul class="nav nav-pills nav-stacked side-column-nav">
+                <li class="active"><%= link_to 'プロフィール', '#' %></li>
+                <li><%= link_to 'お気に入りのトレーニング', '#' %></li>
+                <li><%= link_to 'コミュニティ', '#' %></li>
+                <li><%= link_to '登録中のアプリケーション', '#' %></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+
+        <div class="col-md-9">
+          <div class="page-header">
+            <h1>プロフィール</h1>
+          </div>
+          <!--編集できるテーブルの作成-->
+          <table class="table table-vertical-middle">
+            <tbody>
+            <!--プロフィール写真-->
+            <tr>
+              <th style="border-top: none;">プロフィール写真</th>
+              <td style="border-top: none;">プロフィール写真</td>
+              <td style="border-top: none;">
+                <div class="pull-right">
+                  <%= link_to '編集', {:controller => 'profiles', :action => 'edit', :id => 'img', remote: true}, class: 'btn btn-default btn-sm' %>
+                  <!--<%= link_to '編集', :edit_customer_profile, class: 'btn btn-default btn-sm', :id => 'img', remote: true %>-->
+                </div>
+              </td>
+            </tr>
+            <!--名前-->
+            <tr>
+              <th style="border-top: none;">名前</th>
+              <td style="border-top: none;">
+                <ruby>
+                  <rb><%= @customer.name %></rb>
+                  <rp>（</rp><rt><%= @customer.name_kana %></rt><rp>）</rp>
+                </ruby>
+              </td>
+              <td style="border-top: none;">
+                <div class="pull-right">
+                  <%= link_to '編集', {:controller => 'profiles', :action => 'edit', :id => 'name', remote: true}, class: 'btn btn-default btn-sm' %>
+                </div>
+              </td>
+            </tr>
+            <!--メールアドレス-->
+            <tr>
+              <th style="border-top: none;">メールアドレス</th>
+              <td style="border-top: none;"><%= Email.find_by(customer_id: @customer.id).main %></td>
+              <td style="border-top: none;">
+                <div class="pull-right">
+                  <%= link_to '編集', {:controller => 'profiles', :action => 'edit', :id => 'email', remote: true}, class: 'btn btn-default btn-sm' %>
+                </div>
+              </td>
+            </tr>
+            <!--Facebook-->
+            <tr class="Facebook">
+              <th style="border-top: none;">Facebook</th>
+              <% if @facebook_link %>
+                  <td style="border-top: none;"><%= link_to @facebook_link, '#' %></td>
+                  <td style="border-top: none;">
+                    <div class="pull-right">
+                      <%= button_tag @facebook_button, class: 'btn btn-default btn-sm', name: 'facebook' %>
+                    </div>
+                  </td>
+              <% else %>
+                  <td style="border-top: none;"><%= @facebook_link %></td>
+                  <td style="border-top: none;">
+                    <div class="pull-right">
+                      <%= button_tag @facebook_button, class: 'btn btn-default btn-sm', name: 'facebook' %>
+                    </div>
+                  </td>
+              <% end %>
+
+            </tr>
+            <!--Twitter-->
+            <tr class="Twitter">
+              <th style="border-top: none;">Twitter</th>
+              <% if @twitter_link %>
+                  <td style="border-top: none;"><%= link_to @twitter_link, '#' %></td>
+                  <td style="border-top: none;">
+                    <div class="pull-right">
+                      <%= button_tag @facebook_button, class: 'btn btn-default btn-sm', name: 'twitter' %>
+                    </div>
+                  </td>
+              <% else %>
+                  <td style="border-top: none;"><%= @twitter_link %></td>
+                  <td style="border-top: none;">
+                    <div class="pull-right">
+                      <%= button_tag @twitter_button, class: 'btn btn-default btn-sm', name: 'twitter' %>
+                    </div>
+                  </td>
+              <% end %>
+            </tr>
+            </tbody>
+          </table>
+          <!--セパレータ-->
+          <hr>
+          <!--<small><%= link_to 'パスワードを変更', :edit_customer_profile, style: 'margin-right: 10px;', name: 'password', id: 'password' %></small>-->
+          <small><%= link_to 'パスワードを変更', {:controller => 'profiles', :action => 'edit', :id => 'password', remote: true}, style: 'margin-right: 10px;' %></small>
+          <small><%= link_to 'アカウントの削除', '#', class: 'show-content-in-modal', style: 'margin-right:' %></small>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="page-header">
+  <h1>メールアドレスの編集</h1>
+</div>
+<div class="alert alert-info">
+  <ul>
+    <li>InsTraineyからのメールは、メインに設定されているメールアドレスに送信されます。</li>
+    <li>メインのメールアドレスは、参加しているコミュニティの主催者と共有され、直接連絡が必要な際に利用されます。</li>
+    <li>メイン以外のメールアドレスは、メールアドレスでイベントに申し込む時などにご利用いただけます。</li>
+  </ul>
+</div>
+<h4>メールアドレス：</h4>
+<table class="table table-hover">
+  <tbody>
+  <!--mainメールアドレス-->
+  <tr>
+    <td><%= @current_customer_email.main %></td>
+    <td><span class="label label-info">メイン</span></td>
+  </tr>
+  <!--sub_1メールアドレス-->
+  <% if @current_customer_email.sub_1 %>
+      <tr>
+        <td>
+          <%= @current_customer_email.sub_1 %>
+        </td>
+        <td>
+          <div class="text-right">
+            <%= link_to 'メインに設定', {:controller => 'profiles', :action => 'change', :id => 'sub_1'},
+                        rel: 'nofollow', class: 'btn btn-default btn-sm', method: :put, remote: true %>
+            <%= link_to ({:controller => 'profiles', :action => 'destroy', :id => 'sub_1'}),
+                        {:rel => 'nofollow', :class => 'btn btn-sm btn-danger', :method => :delete, :remote => true,
+                         :data => {confirm: "#{@current_customer_email.sub_1}をプロフィールから削除しますか？"}} do %>
+                <i class="fa fa-trash"></i>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+  <% end %>
+  <!--sub_2メールアドレス-->
+  <% if @current_customer_email.sub_2 %>
+      <tr>
+        <td><%= @current_customer_email.sub_2 %></td>
+        <td>
+          <div class="text-right">
+            <%= link_to 'メインに設定', {:controller => 'profiles', :action => 'change', :id => 'sub_2'},
+                        rel: 'nofollow', class: 'btn btn-default btn-sm', method: :put, remote: true %>
+            <%= link_to ({:controller => 'profiles', :action => 'destroy', :id => 'sub_2'}),
+                        {:rel => 'nofollow', :class => 'btn btn-sm btn-danger', :method => :delete, :remote => true,
+                         :data => {confirm: "#{@current_customer_email.sub_2}をプロフィールから削除しますか？"}} do %>
+                <i class="fa fa-trash"></i>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<% unless @current_customer_email.sub_2 %>
+    <h4>新しいメールアドレスを追加：</h4>
+    <%= form_for @profile_form, url: :customer_profile, method: :patch, data: {remote: true} do |f| %>
+        <div class="form-group has-danger">
+          <%= hidden_field_tag "edit_type", "email" %>
+          <%= f.label :email, 'メールアドレス' %>
+          <%= f.text_field :email %>
+        </div>
+        <h5>Traineyからご本人様確認のメールを送ります。</h5>
+        <div class="form-actions">
+          <%= f.submit '追加', class: 'btn btn-default btn-primary' %>
+        </div>
+    <% end %>
+<% end %>

@@ -1,0 +1,171 @@
+@import '../shared/import';
+
+
+html, body {
+  margin: 0px;
+  padding: 0px;
+}
+
+//h1, h2, h3, h4 {
+//  margin-top: $h-margin;
+//}
+
+#wrapper {
+
+  @include write-border-line;
+}
+
+//header
+
+.jumbotron {
+
+  @include write-border-line(#6C8C22);
+
+  background: image-url("customer-top-header.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  //height: 140vh;
+  //min-height: 450px;
+  //padding-top: 0px;
+  padding-bottom: 50px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+//ヘッダー部分
+.jumbotron > .content.content-without-top-padding {
+
+  @include write-border-line(orange);
+  //中央寄せ
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  box-sizing: border-box;
+
+  h1 {
+
+    @include write-border-line;
+    font-color: $h1-color;
+    text-align: center;
+    margin-top: 25px;
+    padding-top: $h1-padding-top;
+  }
+
+  p {
+    @include write-border-line;
+    text-align: center;
+  }
+
+  .form-group {
+
+    @include write-border-line(white);
+
+    .input-group {
+
+      //上下、左右
+      margin: 0 auto;
+      width: $search-form-width;
+      //margin-bottom:20px;
+    }
+
+  }
+
+}
+
+//セパレータ
+.main-content > .container > .page-home-separator {
+
+  @include write-border-line(red);
+  padding-top: 20px;
+
+  hr {
+
+    border-top: 3px double black;
+    text-align: center
+  }
+
+  span {
+
+    @include write-border-line(blue);
+
+    margin: -35px auto 25px auto;
+    //margin: -25px auto 25px auto;
+    display: block;
+    width: 150px;
+    padding: 5px;
+    background: #333;
+    font-size: 12px;
+    text-align: center;
+    text-shadow: 0 1px 0 #000;
+    color: #fff;
+    -webkit-box-shadow: inset 1px 1px 3px #222;
+    box-shadow: inset 1px 1px 3px #222;
+    border-radius: inherit;
+  }
+
+}
+
+//メインコンテンツ
+.main-content > .container {
+
+  @include write-border-line(black);
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+
+  .container {
+
+    @include write-border-line;
+
+    .row {
+      @include write-border-line(green);
+
+      .col-md-4 {
+        @include write-border-line(blue);
+        padding: 0 30px;
+        box-sizing: border-box;
+
+        .thumbnail {
+
+          @include write-border-line(red);
+          box-sizing: border-box;
+          margin-bottom: $thumbnail-margin;
+          margin-top: $thumbnail-margin;
+
+          img {
+            width: 242px;
+            height: 200px;
+            box-sizing: border-box;
+          }
+
+          .caption {
+
+            @include write-border-line(black);
+            box-sizing: border-box;
+
+            p {
+              text-align: left;
+              font-size: $p-font-size;
+            }
+          }
+        }
+      }
+    }
+
+    .text-center {
+      @include write-border-line(red);
+
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+
+  }
+
+}
+
+
+
